@@ -1,0 +1,19 @@
+{
+  "name": "wimo",
+  "version": "1.0.0",
+  "description": "Distributed chat application with multiple server nodes, failover and persistence",
+  "scripts": {
+    "node1": "node server/index.js node1",
+    "node2": "node server/index.js node2",
+    "node3": "node server/index.js node3",
+    "client": "node client/cli.js",
+    "test": "node test/failover-test.js",
+    "load": "node test/load-test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "ws": "^8.22.1"
+  }
+}

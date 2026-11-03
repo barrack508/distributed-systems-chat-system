@@ -1,0 +1,9 @@
+{
+  "nodes": [
+    { "id": "node1", "host": "localhost", "port": 3001 },
+    { "id": "node2", "host": "localhost", "port": 3002 },
+    { "id": "node3", "host": "localhost", "port": 3003 }
+  ],
+  "historySize": 50,
+  "heartbeatMs": 5000
+}

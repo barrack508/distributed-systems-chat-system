@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wimo - Distributed Chat</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- ==================== LOGIN SCREEN ==================== -->
+  <div id="login">
+    <div class="l-art">
+      <div class="brand-row"><div class="mark">W</div>Wimo</div>
+      <svg class="net" viewBox="0 0 460 270" fill="none" aria-hidden="true">
+        <g stroke="#fff" stroke-opacity=".18" stroke-width="1.5">
+          <path d="M120 80 L340 80"/><path d="M120 80 L230 200"/><path d="M340 80 L230 200"/>
+          <path d="M40 40 L120 80"/><path d="M50 140 L120 80"/><path d="M420 40 L340 80"/><path d="M430 140 L340 80"/><path d="M130 250 L230 200"/><path d="M330 250 L230 200"/>
+        </g>
+        <g stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 16" class="flow">
+          <path d="M120 80 L340 80"/><path d="M340 80 L230 200"/><path d="M230 200 L120 80"/>
+        </g>
+        <g fill="#fff"><circle cx="120" cy="80" r="17"/><circle cx="340" cy="80" r="17"/><circle cx="230" cy="200" r="17"/></g>
+        <g fill="#0a0a0a" font-size="12" font-weight="700" text-anchor="middle"><text x="120" y="84">1</text><text x="340" y="84">2</text><text x="230" y="204">3</text></g>
+        <g fill="#fff" fill-opacity=".55"><circle cx="40" cy="40" r="5"/><circle cx="50" cy="140" r="5"/><circle cx="420" cy="40" r="5"/><circle cx="430" cy="140" r="5"/><circle cx="130" cy="250" r="5"/><circle cx="330" cy="250" r="5"/></g>
+      </svg>
+      <div>
+        <h2>Conversations that never go down.</h2>
+        <p>Wimo runs on a cluster of servers. If one fails, you are reconnected to another automatically and no message is lost.</p>
+        <div class="tags"><span>Search people</span><span>Private chats</span><span>Groups</span><span>Auto failover</span></div>
+      </div>
+    </div>
+    <div class="l-form">
+      <div class="l-box">
+        <h1>Welcome to Wimo</h1>
+        <p class="sub">Enter your username to login or create a new account to join.</p>
+        <label for="name">Username</label>
+        <input id="name" maxlength="20" placeholder="e.g. barrack" autocomplete="off" autofocus>
+        <button class="join-btn" id="joinBtn">Login / Join Wimo</button>
+        <p class="sub" style="margin-top:14px;font-size:12px">If your username already exists, you will log in. If not, a new account will be created and you'll join Wimo.</p>
+        <div id="loginErr"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN APP ==================== -->
+  <div id="app">
+    <div class="layout" id="layout">
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="sb-header">
+          <div class="mark">W</div>
+          <div class="sb-info">
+            <div class="sb-title">Wimo <span class="ver">v2.4</span></div>
+            <div class="sb-sub">Team Workspace</div>
+          </div>
+          <button class="add-btn" id="newGroupBtn" title="Create a group">+</button>
+        </div>
+        <div class="sb-search">
+          <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+          <input id="search" placeholder="Search people or chats..." autocomplete="off">
+          <span class="kbd">⌘K</span>
+        </div>
+        <div class="sb-tabs" id="tabs">
+          <button class="on" data-tab="all">All</button>
+          <button data-tab="direct">Direct</button>
+          <button data-tab="groups">Channels</button>
+        </div>
+        <div class="sb-list" id="list"></div>
+        <div class="sb-me" id="meBox"></div>
+        <div class="sb-nodes"><span class="lbl">Node</span><span id="nodes" style="display:contents"></span></div>
+      </aside>
+
+      <!-- Chat Pane -->
+      <main>
+        <div class="chat-header">
+          <button class="back-btn" id="backBtn" title="Back">&#8249;</button>
+          <div id="hAv"></div>
+          <div class="h-info">
+            <div class="h-title" id="hTitle"></div>
+            <div class="h-sub" id="hSub"></div>
+          </div>
+        </div>
+        <div id="banner"></div>
+        <div id="messages"></div>
+        <div id="composer">
+          <input class="composer-input" id="text" maxlength="1000" placeholder="Message Workspace... (Markdown supported)" autocomplete="off">
+          <div class="composer-bar">
+            <div class="toolbar">
+              <button title="Attach">&#x1F4CE;</button>
+              <button title="Code">&lt;/&gt;</button>
+              <button title="Emoji">&#x1F60A;</button>
+            </div>
+            <button class="send-btn" id="sendBtn" disabled>Send <span>&#9654;</span></button>
+          </div>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- ==================== GROUP MODAL ==================== -->
+  <div id="modal">
+    <div class="sheet">
+      <h3>New group</h3>
+      <input id="gName" maxlength="30" placeholder="Group name">
+      <div class="chips" id="gChips"></div>
+      <input id="gSearch" placeholder="Search people to add">
+      <div class="pick" id="gPick"></div>
+      <div class="actions">
+        <button class="btn-ghost" id="gCancel" type="button">Cancel</button>
+        <button class="btn-primary" id="gCreate" type="button" disabled>Create group</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

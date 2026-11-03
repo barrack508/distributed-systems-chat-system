@@ -1,0 +1,8 @@
+{"id":"u:Spidey","t":"user","name":"Spidey","ts":1793696291480}
+{"id":"u:john","t":"user","name":"john","ts":1793696298961}
+{"id":"u:barrack","t":"user","name":"barrack","ts":1793696302850}
+{"id":"u:warrior","t":"user","name":"warrior","ts":1793696482732}
+{"id":"8e407627-0add-437a-bb4c-7f696e540a5a","t":"msg","from":"warrior","text":"hello","ts":1793696503135,"node":"node1","conv":"dm:john|warrior","to":"john"}
+{"id":"u:spidey","t":"user","name":"spidey","ts":1793697888580}
+{"id":"af5947aa-6a4a-4b26-9f90-69dbffbcb330","t":"msg","from":"spidey","text":"hello","ts":1793697896120,"node":"node1","conv":"dm:barrack|spidey","to":"barrack"}
+{"id":"ec45f4bb-89cd-4107-b4f3-41c117e7a3ad","t":"msg","from":"barrack","text":"hello😁😁😁","ts":1793698413105,"node":"node1","conv":"general"}
